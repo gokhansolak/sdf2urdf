@@ -34,19 +34,25 @@ def children2attributes(root):
 
 
 def convert_sdf2urdf(root):
+    # pose nodes have a special treatment
     if root.tag == "pose":
         return pose2origin(root)
+    # terminal nodes are just converted
     if root.tag in ["box","sphere","cylinder","inertia","limit"]:
         return children2attributes(root)
+    # complex nodes are iterated over
     if root.tag in ["joint","link","robot","geometry","inertial","visual","collision"]:
         new_root = etree.Element(root.tag, attrib=root.attrib)
         children = root.getchildren()
         for c in children:
             new_root.append(convert_sdf2urdf(c))
         return new_root
-    print(root.tag + " element is not recognized.")
+    # otherwise put a warning and return as it is
+    warn_comment = etree.Comment(root.tag + " element is not recognized and left unchanged.")
+    root.insert(0, warn_comment)
+    return root
 
-    
+# take the input
 str_lines = vt.get_selected_text()
 
 # parse xml
@@ -54,10 +60,8 @@ root = etree.fromstring(str_lines)
 
 new_root = convert_sdf2urdf(root)
 
-# override the selected lines
+# override the selected lines in buffer
 new_str = etree.tostring(new_root).decode("utf-8")
 vt.replace_selected_text(new_str)
 
-#new_str_list = etree.tostringlist(new_root, "utf-8")
-#print(new_str_list)
 print("done")

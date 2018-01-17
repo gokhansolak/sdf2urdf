@@ -28,5 +28,5 @@ You can use the same functions in vim with the plugin file under 'vim/' folder.
 * Call the conversion command ``:S2u``
 * Selected element will be replaced with its URDF counterpart.
 
-[usage-img]: docs/sdf2urdf-usage.png "Usage example"
-[vim-usage-gif]: docs/vim-usage-01.gif "Vim usage gif"
+[usage-img]: doc/sdf2urdf-usage.png "Usage example"
+[vim-usage-gif]: doc/vim-usage-01.gif "Vim usage gif"

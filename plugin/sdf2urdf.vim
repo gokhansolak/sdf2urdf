@@ -9,5 +9,6 @@ function! SdfToUrdf()
 	py3file sdf2urdf.py
 endfunc
 
+"TODO: implement autoload
 command! S2u call SdfToUrdf()
 

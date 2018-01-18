@@ -22,8 +22,16 @@ def replace_selected_text(new_str):
 
     # first line
     new_str = lines[0][:col1] + new_str + lines[-1][col2+1:]
-    buf[lnum1-1] = new_str
 
-    # delete other lines
-    del buf[lnum1:lnum2]
+    # split into multiple lines
+    new_str_list = new_str.split('\n')
+
+    # delete old lines
+    del buf[lnum1-1:lnum2]
+
+    # insert new lines by reverse iteration
+    # for i in range(len(new_str_list)-1, -1, -1):
+        # buf.append(new_str_list[i], lnum1)
+    buf.append(new_str_list, lnum1-1)
+        
 

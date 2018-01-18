@@ -5,10 +5,5 @@ endif
 
 let s:path = expand('<sfile>:p:h')
 
-function! SdfToUrdf()
-	py3file sdf2urdf.py
-endfunc
-
-"TODO: implement autoload
-command! S2u call SdfToUrdf()
+command! S2u call sdf2urdf#SdfToUrdf( s:path )
 

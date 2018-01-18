@@ -63,7 +63,7 @@ root = etree.fromstring(str_lines)
 
 new_root = convert_sdf2urdf(root)
 
-# override the selected lines
+# write the resulting element
 new_str = etree.tostring(new_root).decode("utf-8")
 print(new_str)
 

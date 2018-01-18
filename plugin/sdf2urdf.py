@@ -2,7 +2,7 @@ import vim
 import sys
 import xml.etree.ElementTree as etree
 
-sys.path.append(vim.eval("s:path"))
+sys.path.append(vim.eval("a:path"))
 import vim_tools as vt
 
 
@@ -23,6 +23,7 @@ def children2attributes(root):
 
     # same tag
     new_root = etree.Element(root.tag)
+
     # add attribs for each child
     for c in children:
         # if this child has children then it is unsuitable

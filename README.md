@@ -1,5 +1,5 @@
 # SDF 2 URDF
-Python functions to convert SDF elements to URDF. SDF and URDF are XML file formats used in robot description.  
+Python program and Vim plugin to convert SDF elements to URDF format. SDF and URDF are XML file formats used in robot description.  
 
 # Usage
 
@@ -17,13 +17,29 @@ It will print the corresponding URDF element.
 The program doesn't fully convert a file at this stage. You should use it element by element. It may need some manual fixes for a few element types, e.g. joints.
 
 # Vim Plug-in
-You can use the same functions in vim with the plugin file under 'vim/' folder. 
+You can use the same function in vim as a plugin. 
 
-## Plugin usage
+## Installing
+
+You can obtain it with a package manager like Vundle:
+
+* Add the line ``Plugin 'gokhansolak/sdf2urdf'`` between
+```vim
+call vundle#begin()
+...
+
+call vundle#end()
+```
+* Run ``:PluginInstall`` in Vim.
+
+Also, if you have Pathogen installed, you can clone this repo under ~/.vim/bundle:
+
+* ``git clone git@github.com:gokhansolak/sdf2urdf.git ~/.vim/bundle/sdf2urdf``
+
+## Usage
 
 ![Vim usage gif][vim-usage-gif]
 
-* Source the 'sdf2urdf.vim' script in vim ``:source path/sdf2urdf.vim``.
 * Select the SDF element to convert in visual mode ``v``.
 * Call the conversion command ``:S2u``
 * Selected element will be replaced with its URDF counterpart.
